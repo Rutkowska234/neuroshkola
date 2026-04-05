@@ -76,12 +76,12 @@
         .modal-lesson-title { font-size: 1.3rem; font-weight: 600; margin: 10px 0; }
         .video-placeholder { width: 100%; height: 400px; background: rgba(0,0,0,0.3); border-radius: 40px; display: flex; align-items: center; justify-content: center; border: 2px dashed rgba(255,255,255,0.2); margin: 30px 0; }
         .price-tag { font-size: 1.8rem; font-weight: bold; color: #a5f3fc; margin: 20px 0; }
-        /* Стили для AI-генератора */
+        /* AI Generator */
         .ai-panel { background: #f5f5f7; border-radius: 30px; padding: 30px; margin-top: 20px; }
         .ai-textarea { width: 100%; padding: 15px; border-radius: 20px; border: 1px solid #ddd; font-size: 1rem; font-family: inherit; margin-bottom: 20px; resize: vertical; }
         .ai-result { text-align: center; margin-top: 30px; }
         .ai-result-img { max-width: 100%; border-radius: 30px; display: none; }
-        .ai-loading { display: none; padding: 40px; text-align: center; }
+        .ai-loading { display: none; padding: 40px; text-align: center; background: rgba(0,0,0,0.05); border-radius: 30px; }
         @media (max-width: 768px) { .title-permian-black.xl { font-size: 4rem; } .title-permian-black.lg { font-size: 3rem; } .modules-grid { grid-template-columns: 1fr; } .bento-grid { grid-template-columns: 1fr; } .item-1, .item-2, .item-3, .item-8 { grid-column: span 1; } .review-grid { grid-template-columns: 1fr; } .faq-grid { grid-template-columns: 1fr; } .modal-lessons-grid { grid-template-columns: 1fr; } header { flex-direction: column; } }
     </style>
 </head>
@@ -111,47 +111,17 @@
 
         <div class="white-section" id="programs">
             <div class="modules-grid">
-                <div class="module-card" onclick="openModule('free')">
-                    <div class="glass-title-wrapper"><div class="glass-title"><span class="emoji-white-outline">🎁</span> БЕСПЛАТНО</div></div>
-                    <ul class="feature-list"><li>Введение в нейросети</li><li>Первые промпты</li><li>Генерация идей</li></ul>
-                    <button class="glass-btn">Начать бесплатно</button>
-                </div>
-                <div class="module-card" onclick="openModule('basic')">
-                    <div class="glass-title-wrapper"><div class="glass-title"><span class="emoji-white-outline">📘</span> БАЗОВЫЙ</div></div>
-                    <div class="price">3 000 ₽ <small>/ рассрочка</small></div>
-                    <ul class="feature-list"><li>Продвинутые промпты</li><li>Нейросети в дизайне</li><li>Работа с изображениями</li><li>Обратная связь</li></ul>
-                    <button class="glass-btn">Выбрать</button>
-                </div>
-                <div class="module-card" onclick="openModule('pro')">
-                    <div class="glass-title-wrapper"><div class="glass-title"><span class="emoji-white-outline">⚡</span> ПРО</div></div>
-                    <div class="price">6 500 ₽</div>
-                    <ul class="feature-list"><li>Основы Python</li><li>Обучение нейросетей</li><li>Дообучение моделей</li><li>Запуск в бизнесе</li></ul>
-                    <button class="glass-btn">Записаться</button>
-                </div>
+                <div class="module-card" onclick="openModule('free')"><div class="glass-title-wrapper"><div class="glass-title"><span class="emoji-white-outline">🎁</span> БЕСПЛАТНО</div></div><ul class="feature-list"><li>Введение в нейросети</li><li>Первые промпты</li><li>Генерация идей</li></ul><button class="glass-btn">Начать бесплатно</button></div>
+                <div class="module-card" onclick="openModule('basic')"><div class="glass-title-wrapper"><div class="glass-title"><span class="emoji-white-outline">📘</span> БАЗОВЫЙ</div></div><div class="price">3 000 ₽ <small>/ рассрочка</small></div><ul class="feature-list"><li>Продвинутые промпты</li><li>Нейросети в дизайне</li><li>Работа с изображениями</li><li>Обратная связь</li></ul><button class="glass-btn">Выбрать</button></div>
+                <div class="module-card" onclick="openModule('pro')"><div class="glass-title-wrapper"><div class="glass-title"><span class="emoji-white-outline">⚡</span> ПРО</div></div><div class="price">6 500 ₽</div><ul class="feature-list"><li>Основы Python</li><li>Обучение нейросетей</li><li>Дообучение моделей</li><li>Запуск в бизнесе</li></ul><button class="glass-btn">Записаться</button></div>
             </div>
         </div>
 
         <div class="bento-grid">
-            <div class="bento-item item-1">
-                <img src="https://i.pinimg.com/736x/36/c5/26/36c5265e155805fb59a7baa583400a1e.jpg" class="teacher-photo">
-                <h1>Котова Юлия<br>Сергеевна</h1>
-                <div class="badge">Преподаватель с 7-летним стажем в НГХУ</div>
-                <p>Два красных диплома: промышленный дизайнер и живописец-преподаватель</p>
-            </div>
-            <div class="bento-item item-2">
-                <h3>🏆 Достижения</h3>
-                <div class="stats-grid"><div class="stat-item"><span class="stat-icon">✓</span>Красный диплом</div><div class="stat-item"><span class="stat-icon">✓</span>Высшее образование</div><div class="stat-item"><span class="stat-icon">✓</span>7 лет опыта</div></div>
-            </div>
-            <div class="bento-item item-3">
-                <h3>📚 6 предметов</h3>
-                <div style="display:flex;flex-wrap:wrap;gap:8px"><span class="subject-tag">Черчение</span><span class="subject-tag">Перспектива</span><span class="subject-tag">Академический рисунок</span><span class="subject-tag">Промышленный дизайн</span><span class="subject-tag">CorelDraw</span><span class="subject-tag">Blender</span></div>
-            </div>
-            <div class="bento-item item-8" style="background:linear-gradient(135deg,rgba(120,100,255,0.4),rgba(170,120,255,0.4))">
-                <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px">
-                    <div><h3 style="font-size:1.6rem">Начните обучение сегодня</h3><p style="opacity:0.8">Пробный урок — бесплатно</p></div>
-                    <button class="glass-btn" style="width:auto;background:white;color:#1e1e2f" onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})">Записаться</button>
-                </div>
-            </div>
+            <div class="bento-item item-1"><img src="https://i.pinimg.com/736x/36/c5/26/36c5265e155805fb59a7baa583400a1e.jpg" class="teacher-photo"><h1>Котова Юлия<br>Сергеевна</h1><div class="badge">Преподаватель с 7-летним стажем в НГХУ</div><p>Два красных диплома: промышленный дизайнер и живописец-преподаватель</p></div>
+            <div class="bento-item item-2"><h3>🏆 Достижения</h3><div class="stats-grid"><div class="stat-item"><span class="stat-icon">✓</span>Красный диплом</div><div class="stat-item"><span class="stat-icon">✓</span>Высшее образование</div><div class="stat-item"><span class="stat-icon">✓</span>7 лет опыта</div></div></div>
+            <div class="bento-item item-3"><h3>📚 6 предметов</h3><div style="display:flex;flex-wrap:wrap;gap:8px"><span class="subject-tag">Черчение</span><span class="subject-tag">Перспектива</span><span class="subject-tag">Академический рисунок</span><span class="subject-tag">Промышленный дизайн</span><span class="subject-tag">CorelDraw</span><span class="subject-tag">Blender</span></div></div>
+            <div class="bento-item item-8" style="background:linear-gradient(135deg,rgba(120,100,255,0.4),rgba(170,120,255,0.4))"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px"><div><h3 style="font-size:1.6rem">Начните обучение сегодня</h3><p style="opacity:0.8">Пробный урок — бесплатно</p></div><button class="glass-btn" style="width:auto;background:white;color:#1e1e2f" onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})">Записаться</button></div></div>
         </div>
 
         <div class="white-section" id="about-section">
@@ -159,8 +129,7 @@
             <div class="about-card"><div class="about-content"><p>НейроШкола — это место, где академический дизайн встречается с передовыми технологиями. Я учу не просто нажимать кнопки, а создавать смыслы и зарабатывать с помощью нейросетей.</p><p>С нуля до профессионального уровня — каждый найдёт путь по душе. Бесплатные уроки для старта, базовый курс для углубления и продвинутый для создания собственных нейросетей.</p></div></div>
         </div>
 
-        <div class="section" id="results">
-            <h2 class="section-title">Истории наших учеников</h2>
+        <div class="section" id="results"><h2 class="section-title">Истории наших учеников</h2>
             <div class="review-grid">
                 <div class="review-item"><div class="review-author">Дмитрий Орлов</div><div class="review-text">Раньше я тратил сотни тысяч на дизайнеров и копирайтеров. После обучения сам генерирую контент для своего интернет-магазина. Экономия — 70% бюджета.</div></div>
                 <div class="review-item"><div class="review-author">Елена Волкова</div><div class="review-text">Была архитектором, но после рождения ребёнка поняла, что не могу работать в офисе. Прошла курс, начала делать промпты для дизайн-студий. Через 2 месяца вышла на доход 60 тыс.</div></div>
@@ -171,8 +140,7 @@
             </div>
         </div>
 
-        <div class="section" id="faq">
-            <h2 class="section-title">Часто задаваемые вопросы</h2>
+        <div class="section" id="faq"><h2 class="section-title">Часто задаваемые вопросы</h2>
             <div class="faq-grid">
                 <div class="faq-item"><div class="faq-question">Что если не успеваю?</div><div class="faq-answer">Доступ навсегда</div></div>
                 <div class="faq-item"><div class="faq-question">Нужен ли опыт?</div><div class="faq-answer">Нет, начинаем с основ</div></div>
@@ -181,7 +149,7 @@
             </div>
         </div>
 
-        <!-- AI-ГЕНЕРАТОР с формой ввода -->
+        <!-- AI ГЕНЕРАТОР -->
         <div class="white-section" id="ai-generator">
             <div class="glass-title-wrapper" style="margin-bottom:40px"><div class="glass-title">🎨 AI-ГЕНЕРАТОР ИЗОБРАЖЕНИЙ</div></div>
             <div class="ai-panel">
@@ -235,11 +203,10 @@
     <div id="lessonModal" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeLessonModal()">×</span><div class="back-to-modules" onclick="backToModules()" style="display:inline-block;margin-bottom:20px;color:#a5f3fc;cursor:pointer">← Назад к модулю</div><h1 id="lessonTitle" style="font-size:3rem;margin-bottom:20px"></h1><div id="lessonDescription" style="margin-bottom:30px"></div><div class="video-placeholder"><span>🎥 Видео будет доступно после покупки модуля</span></div><div style="display:flex;gap:20px;margin-top:30px"><button class="glass-btn" id="prevLessonBtn" onclick="navigateLesson('prev')">← Предыдущий</button><button class="glass-btn" id="nextLessonBtn" onclick="navigateLesson('next')">Следующий →</button></div></div></div>
 
     <script>
-        // Данные уроков
         const lessons = {
-            free: [{title:'Введение в нейросети',desc:'Что такое нейросети, как они работают и где применяются. Разбор популярных инструментов.'},{title:'Первые промпты',desc:'Как правильно формулировать запросы. Простые техники для быстрого результата.'},{title:'Генерация идей для дизайна',desc:'Используем нейросети для поиска вдохновения и создания мудбордов.'},{title:'Создание первого изображения',desc:'Практическое занятие: генерируем картинку под свой проект.'},{title:'Как применять результат',desc:'Куда использовать сгенерированные изображения. Примеры для соцсетей и портфолио.'}],
-            basic: [{title:'Продвинутые промпты для дизайнеров',desc:'10+ техник формулировки запросов.'},{title:'Нейросети в графическом дизайне',desc:'Создание логотипов, баннеров, обложек.'},{title:'Генерация и обработка изображений',desc:'Редактирование фото, удаление фона, ретушь.'},{title:'Создание контента для соцсетей',desc:'Тексты, картинки, видео — полный цикл.'},{title:'Разбор реальных кейсов',desc:'Как студии и фрилансеры зарабатывают.'}],
-            pro: [{title:'Основы Python для нейросетей',desc:'Переменные, циклы, функции — всё, что нужно.'},{title:'Обучение нейросетей с нуля',desc:'Как собрать и обучить свою первую модель.'},{title:'Дообучение готовых моделей',desc:'Настраиваем существующие нейросети под свои задачи.'},{title:'Оптимизация и ускорение',desc:'Как заставить нейросеть работать быстрее.'},{title:'Запуск в бизнесе',desc:'Интеграция моделей в реальные проекты.'}]
+            free: [{title:'Введение в нейросети',desc:'Что такое нейросети, как они работают и где применяются.'},{title:'Первые промпты',desc:'Как правильно формулировать запросы.'},{title:'Генерация идей',desc:'Используем нейросети для вдохновения.'},{title:'Создание первого изображения',desc:'Практическое занятие.'},{title:'Как применять результат',desc:'Куда использовать сгенерированные изображения.'}],
+            basic: [{title:'Продвинутые промпты',desc:'10+ техник формулировки запросов.'},{title:'Нейросети в дизайне',desc:'Создание логотипов, баннеров.'},{title:'Обработка изображений',desc:'Редактирование фото, удаление фона.'},{title:'Контент для соцсетей',desc:'Полный цикл производства контента.'},{title:'Разбор кейсов',desc:'Как студии и фрилансеры зарабатывают.'}],
+            pro: [{title:'Основы Python',desc:'Всё, что нужно для работы с моделями.'},{title:'Обучение нейросетей',desc:'Собираем и обучаем свою первую модель.'},{title:'Дообучение моделей',desc:'Настраиваем существующие нейросети.'},{title:'Оптимизация',desc:'Как заставить нейросеть работать быстрее.'},{title:'Запуск в бизнесе',desc:'Интеграция моделей в реальные проекты.'}]
         };
         let currentModule = '', currentLessonIndex = 0;
         function openModule(t){document.getElementById('freeModuleLessons').style.display='none';document.getElementById('basicModuleLessons').style.display='none';document.getElementById('proModuleLessons').style.display='none';document.getElementById(t+'ModuleLessons').style.display='block';document.getElementById('moduleModal').classList.add('active');}
@@ -251,53 +218,18 @@
         function closeLessonModal(){document.getElementById('lessonModal').classList.remove('active');}
         window.onclick=function(e){if(e.target===document.getElementById('moduleModal'))closeModal();if(e.target===document.getElementById('lessonModal'))closeLessonModal();}
 
-        // AI ГЕНЕРАТОР через Colab API
-        const COLAB_API_URL = "https://0dde16cf8e12b7e230.gradio.live/api/predict";
+        // AI ГЕНЕРАТОР (прямой iframe из Colab - самый надёжный способ)
+        const colabUrl = 'https://0dde16cf8e12b7e230.gradio.live';
         
-        async function generateImage() {
-            const prompt = document.getElementById('aiPrompt').value.trim();
-            if (!prompt) {
-                alert('Введите описание изображения');
-                return;
-            }
-            document.getElementById('aiLoading').style.display = 'block';
-            document.getElementById('aiResultImg').style.display = 'none';
-            document.getElementById('aiPlaceholder').style.display = 'none';
-            document.getElementById('aiDownloadBtn').style.display = 'none';
-            try {
-                const response = await fetch(COLAB_API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ data: [prompt] })
-                });
-                const result = await response.json();
-                if (result.data && result.data[0]) {
-                    document.getElementById('aiResultImg').src = result.data[0];
-                    document.getElementById('aiResultImg').style.display = 'block';
-                    document.getElementById('aiDownloadBtn').style.display = 'inline-block';
-                } else {
-                    throw new Error('Нет данных');
-                }
-            } catch (error) {
-                document.getElementById('aiPlaceholder').innerHTML = '⚠️ Ошибка: ' + error.message + '<br>Убедитесь, что Colab запущен и ссылка актуальна';
-                document.getElementById('aiPlaceholder').style.display = 'block';
-            } finally {
-                document.getElementById('aiLoading').style.display = 'none';
-            }
-        }
-        
-        function downloadImage() {
-            const img = document.getElementById('aiResultImg');
-            if (img.src) {
-                const link = document.createElement('a');
-                link.href = img.src;
-                link.download = 'generated_image.png';
-                link.click();
-            }
-        }
-        
-        document.getElementById('aiGenerateBtn').onclick = generateImage;
-        document.getElementById('aiDownloadBtn').onclick = downloadImage;
+        // Создаём iframe с интерфейсом Colab прямо на сайте
+        const aiPanel = document.querySelector('.ai-panel');
+        aiPanel.innerHTML = `
+            <iframe src="${colabUrl}" style="width:100%; height:700px; border:none; border-radius:30px;"></iframe>
+            <p style="text-align:center; margin-top:15px; color:#666; font-size:0.9rem;">
+                🎨 Введите промпт в поле выше и нажмите Submit. Генерация может занять 20-30 секунд.
+                <br>Убедитесь, что Colab запущен (открыта ссылка <a href="${colabUrl}" target="_blank">${colabUrl}</a>)
+            </p>
+        `;
     </script>
 </body>
 </html>
